@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"   
+    android:background="#fff"
+    android:orientation="vertical" >
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_weight="1"
+      android:scrollbars="vertical">
+      <LinearLayout 
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:gravity="center|left"
+        android:layout_height="30dp"
+        android:text="Java工程师" />
+     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="fill_parent"
+        android:textColor="#696969"
+        android:gravity="center|left"
+        android:layout_height="20dp"
+        android:text="北京热潮网络科技有限责任公司 " />
+     <View
+         android:layout_width="fill_parent"
+         android:layout_height="1dp"
+         android:background="#d3d3d3"/>
+     <TextView
+        android:id="@+id/textView3"
+        android:layout_width="fill_parent"
+        android:gravity="center|left"
+        android:layout_height="20dp"
+        android:text="职位要求" />
+
+    <TextView
+        android:id="@+id/rdj_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#696969"
+        android:layout_weight="1"
+        android:text="" />
+    </LinearLayout>
+    </ScrollView>
+     <LinearLayout 
+        android:layout_width="fill_parent"   
+        android:background="#d3d3d3"     
+        android:layout_height="40dp">  
+       <Button
+            android:id="@+id/rjd_button1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#64E355"
+            android:text="拒绝"
+            android:layout_weight="1"/>  
+            <View
+         android:layout_width="3dp"
+         android:layout_height="fill_parent"
+         android:background="#d3d3d3"/>
+           <Button
+               android:id="@+id/rjd_button2"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+              android:background="#64E355"
+               android:text="接受"
+               android:layout_weight="1"/> 
+    </LinearLayout>
+
+</LinearLayout>

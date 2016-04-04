@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="#d3d3d3">
+    <ImageView
+        android:id="@+id/time_image"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/back" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_height="40dp"
+        android:textSize="20sp"
+        android:text="工作时间    " />
+
+    <Button
+        android:id="@+id/t_button"
+        android:background="#d3d3d3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#48D1CC"
+        android:text="确定    " />
+
+    </LinearLayout>      
+           <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#0000CD"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:paddingLeft="10dp"
+            android:background="#fff"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/t_tableRow1"               
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                 <TextView
+               android:id="@+id/aa_textView1"
+               android:layout_width="wrap_content"
+               android:layout_height="45dp"
+               android:layout_weight="1"
+               android:gravity="center|left"              
+               android:text="上午8:00-10:00" />
+
+             <ImageView
+              android:id="@+id/t_image1"
+              android:layout_gravity="center"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"/>
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/t_tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="45dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="上午10:00-12:00" />
+
+             <ImageView
+                 android:id="@+id/t_image2"
+              android:layout_gravity="center"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:scaleType="fitCenter"
+              android:background="#fff" />
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/t_tableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="45dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="中午12:00-14:00" />
+
+             <ImageView
+              android:id="@+id/t_image3"
+              android:layout_gravity="center"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:scaleType="fitCenter"
+              android:background="#fff" />
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/t_tableRow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="45dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="下午14:00-16:00" />
+
+             <ImageView
+              android:id="@+id/t_image4"
+              android:layout_gravity="center"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"/>
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/t_tableRow5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="45dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="下午16:00-18:00" />
+
+             <ImageView
+              android:id="@+id/t_image5"
+              android:layout_gravity="center"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:scaleType="fitCenter"
+              android:background="#fff" />
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/t_tableRow6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="45dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="晚上18:00-20:00" />
+
+             <ImageView
+              android:id="@+id/t_image6"
+              android:layout_gravity="center"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:scaleType="fitCenter"
+              android:background="#fff" />
+            </TableRow>
+                        <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/t_tableRow7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="45dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="晚上20:00-22:00" />
+
+             <ImageView
+              android:id="@+id/t_image7"
+              android:layout_gravity="center"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"/>
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+        </TableLayout>
+        
+       
+
+</LinearLayout>

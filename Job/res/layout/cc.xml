@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+     <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="60dp" 
+    android:gravity="center_vertical"
+    android:background="#ffffff"
+    android:orientation="horizontal" >
+
+    <LinearLayout 
+         android:layout_width="200dp"
+         android:layout_height="60dp"
+         android:paddingLeft="10dp"
+         android:paddingRight="10dp"
+         android:layout_weight="1"
+         android:orientation="vertical">
+       <LinearLayout 
+         android:layout_width="fill_parent"
+         android:layout_height="30dp"
+         android:layout_weight="1"
+         android:orientation="horizontal">
+        <TextView
+            android:id="@+id/cc_t1"
+              android:layout_width="300dp"
+              android:layout_height="30dp"
+              android:layout_weight="1"
+              android:gravity="center|left"
+              android:text="公司名称"
+              android:textSize="13sp" />
+      <TextView
+          android:id="@+id/cc_t2"
+         android:layout_width="wrap_content"
+         android:layout_height="30dp"
+         android:text="城市"
+         android:textColor="#696969"
+         android:gravity="center|left"
+         android:textSize="13sp" />
+     </LinearLayout>
+     <LinearLayout 
+         android:layout_width="fill_parent"
+         android:layout_height="30dp"
+         android:layout_weight="1"
+         android:orientation="horizontal">
+       <TextView
+           android:id="@+id/cc_t3"
+         android:layout_width="0dp"
+         android:layout_height="30dp"
+         android:layout_weight="1"
+         android:text="学校"
+         android:textColor="#696969"
+         android:gravity="center|left" />
+       <TextView
+          android:id="@+id/cc_t4"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textColor="#F75800"
+         android:text="时间  " />
+        <TextView
+         android:id="@+id/cc_t5"
+         android:layout_width="wrap_content"
+         android:layout_height="30dp"
+         android:text="地点"
+         android:textColor="#F75800"
+         android:gravity="center|left"
+         />
+       </LinearLayout>
+     </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="#ffffff"
+            android:scaleType="fitCenter"
+            android:src="@drawable/searchnext" />
+        </LinearLayout>
+
+
+</LinearLayout>

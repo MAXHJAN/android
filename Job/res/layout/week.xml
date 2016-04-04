@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="#d3d3d3">
+    <ImageView
+        android:id="@+id/week_back"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/back" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_height="40dp"
+        android:textSize="20sp"
+        android:text="工作时间        " />
+    </LinearLayout>      
+           <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#0000CD"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:paddingLeft="10dp"
+            android:background="#fff"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/w_tab1"               
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                 <TextView
+               android:id="@+id/aa_textView1"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"              
+               android:text="周一" />
+
+             <ImageView
+              android:id="@+id/imageButton1"
+              android:layout_gravity="center"
+              android:layout_width="15dp"
+              android:layout_height="15dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"
+              android:src="@drawable/searchnext" />
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/w_tab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="周二" />
+
+             <ImageView
+              android:layout_gravity="center"
+              android:layout_width="15dp"
+              android:layout_height="15dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"
+              android:src="@drawable/searchnext" />
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/w_tab3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="周三" />
+
+             <ImageView
+              android:layout_gravity="center"
+              android:layout_width="15dp"
+              android:layout_height="15dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"
+              android:src="@drawable/searchnext" />
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/w_tab4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="周四" />
+
+             <ImageView
+              android:layout_gravity="center"
+              android:layout_width="15dp"
+              android:layout_height="15dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"
+              android:src="@drawable/searchnext" />
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/w_tab5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="周五" />
+
+             <ImageView
+              android:layout_gravity="center"
+              android:layout_width="15dp"
+              android:layout_height="15dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"
+              android:src="@drawable/searchnext" />
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/w_tab6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="周六" />
+
+             <ImageView
+              android:layout_gravity="center"
+              android:layout_width="15dp"
+              android:layout_height="15dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"
+              android:src="@drawable/searchnext" />
+            </TableRow>
+                        <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/w_tab7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+              <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:text="周日" />
+
+             <ImageView
+              android:layout_gravity="center"
+              android:layout_width="15dp"
+              android:layout_height="15dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"
+              android:src="@drawable/searchnext" />
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+        </TableLayout>
+        
+       
+
+</LinearLayout>

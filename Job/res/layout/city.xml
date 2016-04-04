@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical" >
+<LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="#d3d3d3">
+    <ImageView
+        android:id="@+id/city_image"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/back" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_height="40dp"
+        android:text="选择地点         " />
+    </LinearLayout>
+    <TextView 
+        android:focusable="true"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:gravity="center|left"
+        android:background="#f5f5f5"
+        android:text="当前城市"/>
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal">
+     <TextView 
+        android:layout_width="wrap_content"
+        android:layout_weight="4"
+        android:layout_height="fill_parent"
+        android:paddingLeft="10dp"
+        android:gravity="center|left"
+        android:text="搜索当前城市职位"/>
+     
+        <TextView 
+        android:id="@+id/city_Textview"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:paddingLeft="10dp"
+        android:gravity="center|right"
+        android:textColor="#696969"
+        android:text="   "/>
+     </LinearLayout>
+         <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:gravity="center|left"
+        android:background="#f5f5f5"
+        android:text="热门城市"/>
+
+         <ListView
+             android:paddingLeft="10dp"             
+             android:id="@+id/city_listView"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content" 
+             android:descendantFocusability="blocksDescendants">
+         </ListView>
+
+</LinearLayout>

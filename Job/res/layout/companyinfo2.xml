@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<ScrollView 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:scrollbars="vertical" >
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center|left"
+        android:text="北京热潮网络科技有限责任公司 " />
+     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+          android:background="#d3d3d3"
+        android:layout_height="40dp"
+        android:gravity="center|left"
+        android:textSize="12sp"
+        android:text="公司地址：北京市西城区西外大街18号金贸大厦C2座1701室 " />
+      <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center|left"
+        android:textSize="12sp"
+        android:text="公司简介" />
+
+    <TextView
+        android:id="@+id/c2_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:textColor="#696969"
+        android:layout_weight="1"
+        android:text="" />
+     <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+          android:background="#d3d3d3"
+        android:gravity="center|left"
+        android:textSize="12sp"
+        android:text="公司联系电话：400-6700055" />
+     <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center|left"
+          android:background="#d3d3d3"
+        android:textSize="12sp"
+        android:text="公司网址：online@sephora.com.cn" />
+</LinearLayout>
+</ScrollView>
+
+    </LinearLayout>

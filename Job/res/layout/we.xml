@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+            <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="40dp"
+    android:background="#d3d3d3"
+    android:orientation="horizontal" >
+    
+    <ImageView
+        android:id="@+id/we_back"
+        android:scaleType="fitCenter"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:textSize="20sp"
+        android:gravity="center"       
+        android:text="关于我们        " />
+    </LinearLayout>
+    <View 
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#d3d3d3"/>
+         <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" 
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:showDividers="middle"
+            android:background="#fff">
+           <TableRow 
+               android:id="@+id/s_Tablerow1">  
+            <TextView
+               android:id="@+id/aa_textView1"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:gravity="center|left"
+               android:textSize="18sp"
+               android:text="软件版本    " />
+            <TextView
+               android:id="@+id/c_text"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:textSize="17sp"
+               android:text="1.0" />            
+            </TableRow>
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#d3d3d3"/>
+            <TableRow
+                android:id="@+id/s_Tablerow2">
+            <TextView
+               android:id="@+id/aa_textView2"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:gravity="center|left"
+               android:textSize="18sp"
+               android:text="联系电话    " />
+            <TextView
+               android:id="@+id/c_text1"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:textSize="17sp"
+               android:text="121345678912"/>            
+            </TableRow>
+             <View 
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#d3d3d3"/>
+            <TableRow 
+                 android:id="@+id/tabl3">  
+            <TextView
+               android:id="@+id/aa_textView3"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:textSize="18sp"
+               android:text="检查更新" />
+            <TextView
+               android:id="@+id/c_text2"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"/>
+             <ImageButton
+              android:id="@+id/imageButton3"
+              android:layout_gravity="center"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"
+              android:src="@drawable/searchnext" />
+            </TableRow>
+             <View 
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#d3d3d3"/>
+              <TableRow 
+               android:id="@+id/s_Tablerow4">  
+            <TextView
+               android:id="@+id/aa_textView4"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"
+               android:gravity="center|left"
+               android:textSize="18sp"
+               android:text="意见反馈" />
+            <TextView
+               android:id="@+id/c_text3"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_weight="1"/>
+           
+             <ImageButton
+              android:id="@+id/imageButton4"
+              android:layout_gravity="center"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:scaleType="fitCenter"
+              android:background="#fff"
+              android:src="@drawable/searchnext" />
+            </TableRow>            
+        </TableLayout>
+        <View 
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="#d3d3d3"/>
+</LinearLayout>

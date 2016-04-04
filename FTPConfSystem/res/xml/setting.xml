@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    
+    
+    <PreferenceCategory android:title="FTP服务器设置" >
+        <EditTextPreference
+            android:defaultValue="192.168.0.0"
+            android:dialogTitle="输入设置"
+            android:key="ftp_ip"
+            android:summary="点击输入"
+            android:title="服务器IP地址" />
+        <EditTextPreference
+            android:defaultValue="21"
+            android:dialogTitle="输入设置"
+            android:key="ftp_port"
+            android:summary="点击输入"
+            android:title="服务器端口号" />
+        <EditTextPreference
+            android:defaultValue="admin"
+            android:dialogTitle="输入设置"
+            android:key="ftp_user"
+            android:summary="点击输入"
+            android:title="用户名" />
+        <EditTextPreference
+            android:defaultValue="admin"
+            android:dialogTitle="输入设置"
+            android:key="ftp_password"
+            android:summary="点击输入"
+            android:title="密码" />
+        <EditTextPreference
+            android:defaultValue="/download/conf/data"
+            android:dialogTitle="输入设置"
+            android:key="ftp_url"
+            android:summary="点击输入"
+            android:title="FTP服务器会议文件根目录" />
+    </PreferenceCategory>
+
+    
+    <PreferenceCategory android:title="本地设置" >
+         <EditTextPreference
+            android:defaultValue="null"
+            android:dialogTitle="输入设置"
+            android:key="local_url"
+            android:summary="点击输入"
+            android:title="本地会议文件根目录" />
+    </PreferenceCategory>
+    
+    
+    <PreferenceCategory android:title="其他选项" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="ftp_auto_sync"
+            android:summaryOff="停止"
+            android:summaryOn="开启"
+            android:title="自动同步" />
+    </PreferenceCategory>
+    
+</PreferenceScreen>
