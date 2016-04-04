@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lightwhite">#fff</color>
+    <color name="black">#515151</color>
+    <color name="green">#11cd6e</color>
+    <color name="red">#d81e06</color>
+    <color name="gray">#d81e06</color>
+    <color name="huise">#d3d3d3</color>
+    <color name="colorPrimary">#222222</color>
+    <color name="colorPri">#eb4f38</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="juhuang">#e0620d</color>
+    <color name="qianhui">#707070</color>
+    
+    
+</resources>

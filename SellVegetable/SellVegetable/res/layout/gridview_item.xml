@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:layout_margin="5dp"
+        android:id="@+id/imageinfo"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/a1" />
+
+    <TextView
+        android:id="@+id/g_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="描述信息" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+       
+        <TextView
+        android:id="@+id/g_price"
+        android:gravity="center|left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:text="￥99.99" />
+
+    <TextView
+        android:id="@+id/g_number"
+        android:layout_weight="1"
+        android:gravity="center|right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="8" />
+    </LinearLayout>
+
+</LinearLayout>

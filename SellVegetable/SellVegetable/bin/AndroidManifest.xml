@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="mx.hnust.sellvegetable"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+     <uses-permission android:name="android.permission.INTERNET" />
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+     <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".MyAppLication"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="mx.hnust.sellvegetable.activity.SpalshActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>        
+        <activity
+            android:name="mx.hnust.sellvegetable.activity.MainActivity"
+            android:label="@string/app_name">           
+        </activity>
+        
+         <activity
+            android:name="mx.hnust.sellvegetable.activity.SettingActivity">           
+        </activity>
+        
+          <activity
+            android:name="mx.hnust.sellvegetable.activity.CommodityInfoActivity">           
+        </activity>
+        <activity
+            android:name="mx.hnust.sellvegetable.activity.PurchaseInfoActivity">           
+        </activity>
+        <activity
+            android:name="mx.hnust.sellvegetable.activity.PersonInfoActivity">           
+        </activity>
+         <activity
+            android:name="mx.hnust.sellvegetable.activity.LoginActivity">           
+        </activity>
+         <activity
+            android:name="mx.hnust.sellvegetable.activity.ResisterActivity">           
+        </activity>
+         <activity
+            android:name="mx.hnust.sellvegetable.activity.AddressInfoActivity">           
+        </activity>
+         <activity
+            android:name="mx.hnust.sellvegetable.activity.AllOrdlerInfoActivity">           
+        </activity>
+         <activity
+            android:name="mx.hnust.sellvegetable.activity.ShoppingCartActivity">           
+        </activity>
+         <activity
+            android:name="mx.hnust.sellvegetable.activity.OrdlerInfoActivity">           
+        </activity>
+         <activity
+            android:name="mx.hnust.sellvegetable.activity.SecurityActivity">           
+        </activity>
+         <activity
+            android:name="mx.hnust.sellvegetable.activity.ChangePaswdActivity">           
+        </activity>
+    </application>
+
+</manifest>

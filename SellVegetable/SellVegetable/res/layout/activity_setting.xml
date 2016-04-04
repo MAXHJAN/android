@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    
+    <View
+        android:id="@+id/c_view"
+        android:background="#11cd6e"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <LinearLayout 
+        android:background="#11cd6e"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center">
+        <ImageView   
+            android:onClick="MyBack"     
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="5dp"
+        	android:src="@drawable/bt_back_sclector" />
+        <TextView
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"
+        	android:gravity="center"
+        	android:textColor="#fff"
+        	android:textSize="19sp"
+        	android:text="系统设置">
+            
+        </TextView>
+        <ImageView        
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content" 
+        	android:layout_marginRight="5dp"
+        	android:src="@drawable/ic_menu"/>        
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="#e6e6e6"/>
+    
+     <TableLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <TableRow
+                android:clickable="true"
+                android:id="@+id/personinfo"
+                android:background="@drawable/cache"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_personaldata" />
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center|left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:text="个人资料" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_next" />
+
+            </TableRow>
+            
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+           <TableRow
+               android:id="@+id/security"
+               android:clickable="true"
+               android:background="@drawable/cache"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_security" />
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center|left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:text="账户与安全" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_next" />
+
+            </TableRow>
+
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+           <TableRow
+               android:clickable="true"
+               android:background="@drawable/cache"
+               android:id="@+id/eliminatecache"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_eliminatecache" />
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center|left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:text="清除缓存" />
+
+            </TableRow>
+
+ 			<View 
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#d3d3d3"/>
+        </TableLayout>
+
+     <LinearLayout
+         android:layout_marginTop="50dp"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" >
+
+         <Button
+             android:id="@+id/person_exit"
+             android:background="@drawable/bt_quit_selector"
+             android:layout_marginLeft="20dp"
+             android:layout_marginRight="20dp"
+             android:layout_width="match_parent"
+             android:layout_height="40dp"
+             android:textSize="16sp"
+             android:textColor="#fff"
+             android:text="退出账户" />
+
+     </LinearLayout>
+
+</LinearLayout>
