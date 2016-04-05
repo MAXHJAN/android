@@ -1,6 +1,9 @@
 package max.phonebook.Ben;
 
-public class Person{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Person implements Serializable{
 
 	private String id;
 	private String name;
@@ -10,7 +13,7 @@ public class Person{
 	private String sortLetters;  //显示数据拼音的首字母
 		
 
-	public Person()
+	public Person ()
 	{
 		
 	}
@@ -53,4 +56,10 @@ public class Person{
 	public void setSortLetters(String sortLetters) {
 		this.sortLetters = sortLetters;
 	}
+	
+	/*@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "id="+id+",name="+name+",phonenumber=";
+	}*/
 }

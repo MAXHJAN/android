@@ -1,26 +1,31 @@
 package max.phonebook.Fragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
-import max.phonebook.MainActivity;
+import max.phonebook.MyAppLication;
+import max.phonebook.PersonInfoActivity;
 import max.phonebook.R;
 import max.phonebook.Adapter.SortAdapter;
+import max.phonebook.Ben.CharacterParser;
 import max.phonebook.Ben.Person;
+import max.phonebook.Ben.PinyinComparator;
 import max.phonebook.ContentResolver.GetPhoneInfo;
 import max.phonebook.View.ClearEditText;
 import max.phonebook.View.SideBar;
@@ -34,27 +39,17 @@ public class ContactsFragment extends Fragment {
 	private SideBar sideBar;
 	private TextView dialog;
 	private ClearEditText mClearEditText;
+	
+	private PinyinComparator pinyinComparator;
+	//获取汉字的首字母
+	private CharacterParser characterParser;
 	private ArrayList<Person> PhoneInfos=new ArrayList<Person>();//创建一个保存获得的联系人的列表来存放数据
 	
 	private  GetPhoneInfo gpi;//创建一个获得联系人
 	
 	private static final int GET_PHONE_OK=0x01;//获取联系人成功
-	public FragmentActivity activity;
-	
-	public Handler handler=new Handler()
-	{
-	      @Override
-	    public void handleMessage(Message msg) {
-	    	// TODO Auto-generated method stub
-	    	super.handleMessage(msg);
-	    	switch (msg.what) {
-			case GET_PHONE_OK:
-				SetView();
-				break;
-
-			}
-	    }
-	};
+	private MyAppLication MyApp;
+	public FragmentActivity activity;		
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -69,27 +64,33 @@ public class ContactsFragment extends Fragment {
 	      parent.removeView(mview);
 	    }
 	    activity=getActivity();
+	    gpi=new GetPhoneInfo(activity);
+	    pinyinComparator = new PinyinComparator();
+	    characterParser = CharacterParser.getInstance();
 	    GetPhoneInfos();
 	    intView(mview);
+	    SetView();
 	    OnClickLisenler();
 		return mview;
 	}
 
 	
+	@SuppressWarnings("static-access")
 	public void GetPhoneInfos()
 	{
-		new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				PhoneInfos=(ArrayList<Person>) gpi.getphoneinfo("");
-				handler.sendEmptyMessage(GET_PHONE_OK);//发信息
-			}
-		}).start();
+		      MyApp=(MyAppLication) activity.getApplication();						
+				PhoneInfos.clear();
+				PhoneInfos=MyApp.getPhoneInfos();				
+				Log.e("123", "--------------"+PhoneInfos.size());					 
 	}
+	
+	/**
+	 * 初始化控件
+	 * @param view
+	 */
 	private void intView(View view)
 	{
+		
 		sideBar = (SideBar) view.findViewById(R.id.sidrbar);
 		dialog = (TextView)view. findViewById(R.id.dialog);
 		sortListView=(ListView) view.findViewById(R.id.listView);
@@ -122,7 +123,11 @@ public class ContactsFragment extends Fragment {
 					public void onItemClick(AdapterView<?> parent, View view,
 							int position, long id) {
 						//这里要利用adapter.getItem(position)来获取当前position所对应的对象
-						Toast.makeText(activity, ((Person)mAdapter.getItem(position)).getName(), Toast.LENGTH_SHORT).show();
+						Bundle mBundle = new Bundle(); 
+						mBundle.putSerializable("person", PhoneInfos.get(position));
+						Intent in=new Intent(activity, PersonInfoActivity.class);
+						in.putExtras(mBundle);  
+						startActivity(in);
 					}
 				});
 			
@@ -133,7 +138,7 @@ public class ContactsFragment extends Fragment {
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count) {
 					//当输入框里面的值为空，更新为原来的列表，否则为过滤数据列表
-					mAdapter.updateListView(gpi.filterData(PhoneInfos,s.toString()));
+					mAdapter.updateListView(filterData(s.toString()));
 				}
 				
 				@Override
@@ -147,10 +152,39 @@ public class ContactsFragment extends Fragment {
 				}
 			});
 	}
+	/**
+	 * 适配数据
+	 */
 	public void SetView()
 	{
+		Collections.sort(PhoneInfos, pinyinComparator);
 		mAdapter=new SortAdapter(activity, PhoneInfos);
 		sortListView.setAdapter(mAdapter);
+	}
+	
+	
+	
+	/**
+	 * 根据输入框中的值来过滤数据并更新ListView
+	 * @param filterStr
+	 */
+	public List<Person> filterData(String filterStr){
+		List<Person> filterDateList = new ArrayList<Person>();		
+		if(TextUtils.isEmpty(filterStr)){
+			filterDateList = PhoneInfos;
+		}else{
+			filterDateList.clear();
+			for(Person person : PhoneInfos){
+				String name = person.getName();
+				if(name.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(name).startsWith(filterStr.toString()))
+				{
+					filterDateList.add(person);
+				}
+			}
+		}
+		// 根据a-z进行排序
+		Collections.sort(filterDateList, pinyinComparator);	
+		return filterDateList;
 	}
 
 }

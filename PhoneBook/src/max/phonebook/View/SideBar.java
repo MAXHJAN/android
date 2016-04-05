@@ -52,11 +52,11 @@ public class SideBar extends View {
 		int singleHeight = height / b.length;// 获取每一个字母的高度
 
 		for (int i = 0; i < b.length; i++) {
-			paint.setColor(Color.rgb(33, 65, 98));
+			paint.setColor(Color.rgb(140, 139, 146));
 			// paint.setColor(Color.WHITE);
 			paint.setTypeface(Typeface.DEFAULT_BOLD);
 			paint.setAntiAlias(true);
-			paint.setTextSize(30);
+			paint.setTextSize(40);
 			// 选中的状态
 			if (i == choose) {
 				paint.setColor(Color.parseColor("#3399ff"));
@@ -71,6 +71,7 @@ public class SideBar extends View {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent event) {
 		final int action = event.getAction();
@@ -90,7 +91,7 @@ public class SideBar extends View {
 			break;
 
 		default:
-			setBackgroundResource(R.drawable.sidebar_background);
+			//setBackgroundResource(R.drawable.sidebar_background);
 			if (oldChoose != c) {
 				if (c >= 0 && c < b.length) {
 					if (listener != null) {

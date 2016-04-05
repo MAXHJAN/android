@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -71,7 +72,14 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 		viewHolder.Head.setImageResource(R.drawable.head);
 		viewHolder.Name.setText(this.list.get(position).getName());
 		viewHolder.PhoneNumber.setText(this.list.get(position).getPhonenumber());
-		
+		viewHolder.tvLetter.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		return view;
 
 	}

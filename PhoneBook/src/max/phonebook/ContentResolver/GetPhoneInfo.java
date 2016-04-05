@@ -1,28 +1,26 @@
 package max.phonebook.ContentResolver;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.provider.ContactsContract.CommonDataKinds.Photo;
-import android.text.TextUtils;
+import android.provider.ContactsContract.RawContacts;
 import max.phonebook.Ben.CharacterParser;
 import max.phonebook.Ben.Person;
-import max.phonebook.Ben.PinyinComparator;
 
 public class GetPhoneInfo {
 
 	private Context context;
-	
-	/**获取库Phon表字段**/  
+	/*
+	*//**获取库Phon表字段**//*  
 	private static final String[] PHONES_PROJECTION = new String[] {  
-		Phone.DISPLAY_NAME, Phone.NUMBER, Photo.PHOTO_ID,Phone.CONTACT_ID };  
+		Phone.DISPLAY_NAME, Phone.NUMBER, Photo.PHOTO_ID,Phone.CONTACT_ID };  */
 	
 	/**联系人显示名称**/  
 	private static final int PHONES_DISPLAY_NAME_INDEX = 0;  
@@ -37,15 +35,11 @@ public class GetPhoneInfo {
 	private static final int PHONES_CONTACT_ID_INDEX = 3; 
 
 	static ArrayList<Person> list=new ArrayList<Person>();//创造存放数据的列表
-	static ArrayList<Person> list1=new ArrayList<Person>();//创造存放数据的列表
+	static ArrayList<Person> list1;//创造存放数据的列表
 	//获取汉字的首字母
-	private CharacterParser cp=new CharacterParser();
-
 	private CharacterParser characterParser;
 
-	static ArrayList<Person> listph=new ArrayList<Person>();//创建一个排好序以后的数组（）
-	
-	private PinyinComparator pinyinComparator;
+	static ArrayList<Person> listph=new ArrayList<Person>();//创建一个排好序以后的数组（）	
 	 
 	
 	
@@ -54,48 +48,22 @@ public class GetPhoneInfo {
 		this.context=context;
 		characterParser = CharacterParser.getInstance();
 	}
-	
+	/**
+	 * 获取手机联系人
+	 * @param str=""
+	 * @return
+	 */
 	public List<Person> getphoneinfo(String str)
 	{
 
 
 		if(str.length()==0){
-			//进行查询
-			//----------------------------------  查询SIM卡
-			ContentResolver resolver =context.getContentResolver();  
-			// 获取Sims卡联系人  
-			Uri uri1 = Uri.parse("content://icc/adn");  
-			Cursor phoneCursor = resolver.query(uri1, PHONES_PROJECTION, null, null,  
-					null);  
-			if (phoneCursor != null) {  
-				while (phoneCursor.moveToNext()) {  
-					Person mperson=new Person();//创建一个对象
-					// 得到手机号码  
-					String phoneNumber = phoneCursor.getString(PHONES_NUMBER_INDEX);  
-					// 当手机号码为空的或者为空字段 跳过当前循环  
-					if (TextUtils.isEmpty(phoneNumber))  
-						continue;  
-					// 得到联系人名称  
-					String contactName = phoneCursor  
-							.getString(PHONES_DISPLAY_NAME_INDEX);  
-
-					//Sim卡中没有联系人头像  
-
-					mperson.setName(contactName);//将名字放入
-					mperson.setSortLetters(getdata(contactName));
-					mperson.setPhonenumber(phoneNumber);//将电话号码放入里面
-					list.add(mperson);//将信息全部放进去 
-				}  
-
-				phoneCursor.close();  
-			}  
-			android.util.Log.e("SIM卡中的联系人的个数：",""+ list.size());
 			//---------------------------------
 			//获取  本地 联系人
 			Uri uri=ContactsContract.Data.CONTENT_URI;//2.0以上系统使用ContactsContract.Data访问联系人
 			Cursor cursor=context.getContentResolver().query(uri, null, null, null, "display_name");//显示联系人时按显示名字排序    	
 			cursor.moveToFirst();
-			List<Person> list=new ArrayList<Person>();
+			ArrayList<Person> list=new ArrayList<Person>();
 			int Index_CONTACT_ID = cursor.getColumnIndex(ContactsContract.Data.CONTACT_ID);//获得CONTACT_ID在ContactsContract.Data中的列数
 			int Index_DATA1 = cursor.getColumnIndex(ContactsContract.Data.DATA1);//获得DATA1在ContactsContract.Data中的列数
 			int Index_MIMETYPE = cursor.getColumnIndex(ContactsContract.Data.MIMETYPE);//获得MIMETYPE在ContactsContract.Data中的列数
@@ -147,10 +115,8 @@ public class GetPhoneInfo {
 			//----------------------做一些相对的处理		
 			//获得联系人
 			android.util.Log.i("联系人的数量",list.size()+"");
-			list1.addAll(list);
-			pinyinComparator = new PinyinComparator();
-			// 根据a-z进行排序源数据
-					Collections.sort(list1, pinyinComparator);
+			list1=list;			
+			// 根据a-z进行排序源数据					
 			return list1;
 		}
 		return list1;//将联系人的信息返回了		
@@ -184,29 +150,94 @@ public class GetPhoneInfo {
 	
 	
 	
-	/**
-	 * 根据输入框中的值来过滤数据并更新ListView
-	 * @param filterStr
+
+	/** 
+	 * 添加联系人 
+     * 数据一个表一个表的添加，每次都调用insert方法   
+	 * @param name
+	 * @param phone
+	 * @param email
+	 * @param address
 	 */
-	public List<Person> filterData(List<Person>PhoneInfos,String filterStr){
-		List<Person> filterDateList = new ArrayList<Person>();
-		
-		if(TextUtils.isEmpty(filterStr)){
-			filterDateList = PhoneInfos;
-		}else{
-			filterDateList.clear();
-			for(Person sortModel : PhoneInfos){
-				String name = sortModel.getName();
-				if(name.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(name).startsWith(filterStr.toString())){
-					filterDateList.add(sortModel);
-				}
-			}
-		}
-		
-		// 根据a-z进行排序
-		Collections.sort(filterDateList, pinyinComparator);
-		//adapter.updateListView(filterDateList);
-		
-		return filterDateList;
-	}
+    public void testAddContacts(String name,String phone,String email,String address){  
+        /* 往 raw_contacts 中添加数据，并获取添加的id号*/  
+        Uri uri = Uri.parse("content://com.android.contacts/raw_contacts");  
+        ContentResolver resolver = context.getContentResolver();  
+        ContentValues values = new ContentValues();  
+        long contactId = ContentUris.parseId(resolver.insert(uri, values));  
+          
+        /* 往 data 中添加数据（要根据前面获取的id号） */  
+        // 添加姓名  
+        uri = Uri.parse("content://com.android.contacts/data");  
+        values.put("raw_contact_id", contactId);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+        values.put("mimetype", "vnd.android.cursor.item/name");  
+        values.put("data2", name);  
+        resolver.insert(uri, values);  
+          
+        // 添加电话  
+        values.clear();  
+        values.put("raw_contact_id", contactId);  
+        values.put("mimetype", "vnd.android.cursor.item/phone_v2");  
+        values.put("data2", "2");  
+        values.put("data1", phone);  
+        resolver.insert(uri, values);  
+          
+        // 添加Email  
+        values.clear();  
+        values.put("raw_contact_id", contactId);  
+        values.put("mimetype", "vnd.android.cursor.item/email_v2");  
+        values.put("data2", "2");  
+        values.put("data1", email);  
+        resolver.insert(uri, values);  
+        
+        // 添加Email  
+        values.clear();  
+        values.put("raw_contact_id", contactId);  
+        values.put("mimetype", "vnd.android.cursor.item/postal-address_v2");  
+        values.put("data2", "2");  
+        values.put("data1", address);  
+        resolver.insert(uri, values);  
+    }
+    
+	
+	
+	
+	
+	/**
+	 * 更新联系人
+	 * @param name
+	 * @param phone
+	 * @param email
+	 * @param address
+	 * @param ContactId
+	 */
+	public void testUpdate(String name, String phone, String email,String address,String ContactId){   
+	    Uri uri = Uri.parse("content://com.android.contacts/data");//对data表的所有数据操作  
+	    ContentResolver resolver = context.getContentResolver();  
+	    ContentValues values = new ContentValues();  
+	    values.put("data1", name);  
+	    resolver.update(uri, values, "mimetype=? and raw_contact_id=?", new String[]{"vnd.android.cursor.item/name",ContactId});
+	    values.clear();
+	    values.put("data1", phone);  
+	    resolver.update(uri, values, "mimetype=? and raw_contact_id=?", new String[]{"vnd.android.cursor.item/phone_v2",ContactId});
+	    values.clear();
+	    values.put("data1", email);  
+	    resolver.update(uri, values, "mimetype=? and raw_contact_id=?", new String[]{"vnd.android.cursor.item/email_v2",ContactId});
+	    values.clear();
+	    values.put("data1", address);  
+	    resolver.update(uri, values, "mimetype=? and raw_contact_id=?", new String[]{"vnd.android.cursor.item/postal-address_v2",ContactId});
+	}  
+	
+
+	    /**
+	     * 删除联系人
+	     * @param ContactId
+	     */
+	    
+	    public void deleteContact(int ContactId) {
+	        context.getContentResolver().delete(
+	                ContentUris.withAppendedId(RawContacts.CONTENT_URI,
+	                		ContactId), null, null);
+	    }	    
+	   
 }
