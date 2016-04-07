@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#11cd6e"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:gravity="center|bottom"
+        android:layout_weight="3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/phonebook_1" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:text="PhoneBook" />
+      
+    </LinearLayout>
+		<LinearLayout		    
+            android:gravity="center|top"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="20dp"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="有了PhoneBook" />
+
+            <TextView
+               android:layout_marginRight="10dp"
+                android:textColor="#fff"
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="妈妈再也不用担心我会忘记电话号码了" />
+
+        </LinearLayout>
+</LinearLayout>
