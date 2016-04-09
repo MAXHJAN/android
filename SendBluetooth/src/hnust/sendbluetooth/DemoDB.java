@@ -9,9 +9,9 @@ import com.mysql.jdbc.Statement;
 public class DemoDB {
 
 	String className="com.mysql.jdbc.Driver";
-	String url="jdbc:mysql://121.201.8.196:3306/mx";
+	String url="jdbc:mysql://localhost:3306/mx";
 	String name="root";
-	String password="tsunh";
+	String password="****";
 	
    public  void send(String phone,String bluetooth){
 	   Connection con = null;
