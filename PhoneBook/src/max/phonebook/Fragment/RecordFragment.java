@@ -15,12 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
 import max.phonebook.MyAppLication;
 import max.phonebook.R;
 import max.phonebook.Adapter.RecordListViewAdapter;
 import max.phonebook.Ben.Record;
 import max.phonebook.ContentResolver.GetRecordInfo;
+import max.phonebook.View.CustomSwipeListView;
 
 public class RecordFragment extends Fragment {
 
@@ -29,7 +29,7 @@ public class RecordFragment extends Fragment {
 	private MyAppLication MyApp;
 	public FragmentActivity activity;
 
-	private ListView recordListView;
+	private CustomSwipeListView recordListView;
 	private RecordListViewAdapter mAdapter;
 
 	public Handler mHandler = new Handler() {
@@ -47,7 +47,6 @@ public class RecordFragment extends Fragment {
 		if (mview == null) {
 			mview = inflater.inflate(R.layout.recordfragment, null);
 		}
-		// 缓存的rootView需要判断是否已经被加过parent，如果有parent需要从parent删除，要不然会发生这个rootview已经有parent的错误。
 		ViewGroup parent = (ViewGroup) mview.getParent();
 		if (parent != null) {
 			parent.removeView(mview);
@@ -60,10 +59,9 @@ public class RecordFragment extends Fragment {
 	}
 
 	private void init(View view) {
-		recordListView = (ListView) view.findViewById(R.id.recordlistview);
+		recordListView = (CustomSwipeListView) view.findViewById(R.id.recordlistview);
 	}
-
-	@SuppressWarnings("unused")
+	
 	private void ListViewLisenler() {
 		recordListView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -104,5 +102,4 @@ public class RecordFragment extends Fragment {
 		mAdapter = new RecordListViewAdapter(activity, RecordList);
 		recordListView.setAdapter(mAdapter);
 	}
-
 }
