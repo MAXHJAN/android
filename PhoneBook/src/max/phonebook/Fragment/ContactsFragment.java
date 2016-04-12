@@ -49,7 +49,6 @@ public class ContactsFragment extends Fragment {
 	private  GetPhoneInfo gpi;//创建一个获得联系人
 	
 	private static final int GET_PHONE_OK=0x01;//获取联系人成功
-	private MyAppLication MyApp;
 	public FragmentActivity activity;	
 	
 	public Handler mHandler=new Handler(){

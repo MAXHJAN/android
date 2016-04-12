@@ -14,20 +14,21 @@ import android.widget.TextView;
 import max.phonebook.R;
 import max.phonebook.Ben.Person;
 
-public class SortAdapter extends BaseAdapter implements SectionIndexer{
+public class SortAdapter extends BaseAdapter implements SectionIndexer {
 	private List<Person> list = null;
 	private Context mContext;
-	
+
 	public SortAdapter(Context mContext, List<Person> list) {
 		this.mContext = mContext;
 		this.list = list;
 	}
-	
+
 	/**
 	 * 当ListView数据发生变化时,调用此方法来更新ListView
+	 * 
 	 * @param list
 	 */
-	public void updateListView(List<Person> list){
+	public void updateListView(List<Person> list) {
 		this.list = list;
 		notifyDataSetChanged();
 	}
@@ -50,49 +51,49 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 		if (view == null) {
 			viewHolder = new ViewHolder();
 			view = LayoutInflater.from(mContext).inflate(R.layout.phonelistview_item, null);
-			viewHolder.Head=(ImageView) view.findViewById(R.id.head);
-			viewHolder.Name=(TextView) view.findViewById(R.id.name);
-			viewHolder.PhoneNumber=(TextView) view.findViewById(R.id.phone);
+			viewHolder.Head = (TextView) view.findViewById(R.id.head);
+			viewHolder.Name = (TextView) view.findViewById(R.id.name);
+			viewHolder.PhoneNumber = (TextView) view.findViewById(R.id.phone);
 			viewHolder.tvLetter = (TextView) view.findViewById(R.id.catalog);
 			view.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) view.getTag();
 		}
-		
-		//根据position获取分类的首字母的Char ascii值
+
+		// 根据position获取分类的首字母的Char ascii值
 		int section = getSectionForPosition(position);
-		
-		//如果当前位置等于该分类首字母的Char的位置 ，则认为是第一次出现
-		if(position == getPositionForSection(section)){
+
+		// 如果当前位置等于该分类首字母的Char的位置 ，则认为是第一次出现
+		if (position == getPositionForSection(section)) {
 			viewHolder.tvLetter.setVisibility(View.VISIBLE);
 			viewHolder.tvLetter.setText(mContent.getSortLetters());
-		}else{
+		} else {
 			viewHolder.tvLetter.setVisibility(View.GONE);
 		}
-		viewHolder.Head.setImageResource(R.drawable.head);
+		if (list.get(position).getName() == null)
+			viewHolder.Head.setText("?");
+		else
+			viewHolder.Head.setText(list.get(position).getName().substring(0, 1));
 		viewHolder.Name.setText(this.list.get(position).getName());
 		viewHolder.PhoneNumber.setText(this.list.get(position).getPhonenumber());
 		viewHolder.tvLetter.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 		return view;
 
 	}
-	
 
-
-	class ViewHolder{
+	class ViewHolder {
 		TextView tvLetter;
-		 ImageView Head;//头像
-		 TextView Name;// 姓名
+		TextView Head;// 头像
+		TextView Name;// 姓名
 		TextView PhoneNumber;// 电话
 	}
-
 
 	/**
 	 * 根据ListView的当前位置获取分类的首字母的Char ascii值
@@ -112,10 +113,10 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 				return i;
 			}
 		}
-		
+
 		return -1;
 	}
-	
+
 	/**
 	 * 提取英文的首字母，非英文字母用#代替。
 	 * 
@@ -123,7 +124,7 @@ public class SortAdapter extends BaseAdapter implements SectionIndexer{
 	 * @return
 	 */
 	private String getAlpha(String str) {
-		String  sortStr = str.trim().substring(0, 1).toUpperCase();
+		String sortStr = str.trim().substring(0, 1).toUpperCase();
 		// 正则表达式，判断首字母是否是英文字母
 		if (sortStr.matches("[A-Z]")) {
 			return sortStr;

@@ -63,7 +63,7 @@ public final class R {
         public static final int textview_shape=0x7f020021;
     }
     public static final class id {
-        public static final int action_settings=0x7f090038;
+        public static final int action_settings=0x7f09003d;
         public static final int add_personaddress=0x7f090011;
         public static final int add_personemail=0x7f090010;
         public static final int add_personname=0x7f09000e;
@@ -112,8 +112,13 @@ public final class R {
         public static final int phonenumner=0x7f090015;
         public static final int phonetitle=0x7f090001;
         public static final int poplistview=0x7f090037;
+        public static final int r_lv_head=0x7f090039;
+        public static final int r_lv_name=0x7f09003a;
+        public static final int r_lv_phone=0x7f09003b;
+        public static final int r_lv_type=0x7f09003c;
         public static final int record=0x7f090008;
         public static final int recordimage=0x7f090009;
+        public static final int recordlistview=0x7f090038;
         public static final int sendsms=0x7f09002e;
         public static final int sidrbar=0x7f090026;
         public static final int submit=0x7f090012;
@@ -133,6 +138,7 @@ public final class R {
         public static final int poplistview_item=0x7f030008;
         public static final int popwindow=0x7f030009;
         public static final int recordfragment=0x7f03000a;
+        public static final int recordlistview_item=0x7f03000b;
     }
     public static final class menu {
         public static final int main=0x7f080000;

@@ -59,15 +59,17 @@ public class mListviewAdapter extends BaseAdapter{
 		if (view == null) {
 			viewHolder = new ViewHolder();
 			view = LayoutInflater.from(mContext).inflate(R.layout.listview_item, null);
-			viewHolder.Head=(ImageView) view.findViewById(R.id.lv_head);
+			viewHolder.Head=(TextView) view.findViewById(R.id.lv_head);
 			viewHolder.Name=(TextView) view.findViewById(R.id.lv_name);
 			viewHolder.PhoneNumber=(TextView) view.findViewById(R.id.lv_phone);
 			view.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) view.getTag();
 		}
-		
-		viewHolder.Head.setImageResource(R.drawable.head);
+		if(listperson.get(position).getName()==null)
+			viewHolder.Head.setText("?");
+		else
+			viewHolder.Head.setText(listperson.get(position).getName().substring(0,1));
 		viewHolder.Name.setText(this.listperson.get(position).getName());
 		viewHolder.PhoneNumber.setText(this.listperson.get(position).getPhonenumber());
 		return view;
@@ -75,7 +77,7 @@ public class mListviewAdapter extends BaseAdapter{
 
 	class ViewHolder{
 		
-		 ImageView Head;//头像
+		TextView Head;//头像
 		 TextView Name;// 姓名
 		TextView PhoneNumber;// 电话
 	}
