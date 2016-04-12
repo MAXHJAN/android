@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import max.phonebook.MyAppLication;
 import max.phonebook.R;
@@ -66,13 +67,15 @@ public class RecordFragment extends Fragment {
 		recordListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {/*
 				// TODO Auto-generated method stub
 
 				Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + RecordList.get(position).getPhone()));
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				activity.startActivity(intent);
-			}
+			*/
+				Toast.makeText(activity, "µã»÷", Toast.LENGTH_SHORT).show();
+				}
 		});
 
 	}

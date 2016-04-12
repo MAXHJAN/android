@@ -64,7 +64,7 @@ public class SMSReceiver extends BroadcastReceiver{
 	        				
 	        				 Intent intn = new Intent();  
 	        				 intn.putExtra("result", phone+"--"+bluetooth+"·¢ËÍ³É¹¦");  
-	        				 intn.setClass(context, MainActivity.class);  
+	        				 intn.setClass(context.getApplicationContext(), MainActivity.class);  
 	        				 intn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  
 	        			     context.getApplicationContext().startActivity(intn);  	
 	        			}

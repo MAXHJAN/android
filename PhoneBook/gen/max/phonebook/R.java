@@ -526,6 +526,7 @@ public final class R {
         public static final int lv_head=0x7f090027;
         public static final int lv_name=0x7f090028;
         public static final int lv_phone=0x7f090029;
+        public static final int mainview=0x7f090003;
         public static final int menu=0x7f09002b;
         public static final int menuitem=0x7f090036;
         public static final int myback=0x7f09000c;
@@ -565,7 +566,6 @@ public final class R {
         public static final int textView1=0x7f09000b;
         public static final int title=0x7f090000;
         public static final int view_content=0x7f09003d;
-        public static final int viewpager=0x7f090003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
