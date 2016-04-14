@@ -21,7 +21,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import max.phonebook.Adapter.PopListViewAdapter;
 import max.phonebook.Ben.Person;
-import max.phonebook.ContentResolver.GetPhoneInfo;
+import max.phonebook.ContentResolver.PhoneInfo;
 
 public class PersonInfoActivity extends Activity implements OnClickListener{
 
@@ -148,7 +148,7 @@ public class PersonInfoActivity extends Activity implements OnClickListener{
 							popupWindow.dismiss();
 						break;
 					case 2:
-						new GetPhoneInfo(PersonInfoActivity.this).deleteContact(Integer.parseInt(PersonInfo.getID()));
+						new PhoneInfo(PersonInfoActivity.this).deleteContact(Integer.parseInt(PersonInfo.getID()));
 						if(popupWindow!=null)
 							popupWindow.dismiss();
 						break;

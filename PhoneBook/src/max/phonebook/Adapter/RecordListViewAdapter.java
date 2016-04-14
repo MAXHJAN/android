@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import max.phonebook.R;
 import max.phonebook.Ben.Record;
+import max.phonebook.ContentResolver.RecordInfo;
 import max.phonebook.View.CustomSwipeListView;
 import max.phonebook.View.SwipeItemView;
 import max.phonebook.View.SwipeItemView.OnSlideListener;
@@ -97,9 +98,10 @@ public class RecordListViewAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				RecordInfo.deleteRecord(list.get(position).getId(), context);
 				list.remove(position);
-				Toast.makeText(context, String.valueOf(position), Toast.LENGTH_SHORT).show();
 				notifyDataSetChanged();
+				Toast.makeText(context, "É¾³ý³É¹¦", Toast.LENGTH_SHORT).show();
 			}
 		});
 		return slideView;

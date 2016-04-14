@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import max.phonebook.Ben.Person;
-import max.phonebook.ContentResolver.GetPhoneInfo;
+import max.phonebook.ContentResolver.PhoneInfo;
 
 public class EditContactActivity extends Activity{
 
@@ -54,7 +54,7 @@ public class EditContactActivity extends Activity{
 				String phone=PersonPhone.getText().toString().trim();
 				String email=PersonEmail.getText().toString().trim();
 				String address=PersonAddress.getText().toString().trim();	
-				new GetPhoneInfo(EditContactActivity.this).testUpdate(name, phone, email,address,person.getID());
+				new PhoneInfo(EditContactActivity.this).testUpdate(name, phone, email,address,person.getID());
 				Toast.makeText(EditContactActivity.this, "±£´æ³É¹¦", Toast.LENGTH_LONG).show();
 			}
 		});

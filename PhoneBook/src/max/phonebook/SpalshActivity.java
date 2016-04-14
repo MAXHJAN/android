@@ -14,7 +14,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import max.phonebook.Ben.Person;
-import max.phonebook.ContentResolver.GetPhoneInfo;
+import max.phonebook.ContentResolver.PhoneInfo;
 
 public class SpalshActivity extends Activity {
 	private MyAppLication MyApp;
@@ -66,7 +66,7 @@ public class SpalshActivity extends Activity {
 			@Override
 			public void run() {				
 				PhoneInfos.clear();
-				PhoneInfos=(ArrayList<Person>) new GetPhoneInfo(SpalshActivity.this).getphoneinfo("");				
+				PhoneInfos=(ArrayList<Person>) new PhoneInfo(SpalshActivity.this).getphoneinfo("");				
 				Log.e("123", "--------------"+PhoneInfos.size());
 				a=1;
 				handler.sendEmptyMessage(0x01);//∑¢–≈œ¢

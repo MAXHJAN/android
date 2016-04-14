@@ -27,7 +27,7 @@ import max.phonebook.Adapter.SortAdapter;
 import max.phonebook.Ben.CharacterParser;
 import max.phonebook.Ben.Person;
 import max.phonebook.Ben.PinyinComparator;
-import max.phonebook.ContentResolver.GetPhoneInfo;
+import max.phonebook.ContentResolver.PhoneInfo;
 import max.phonebook.View.ClearEditText;
 import max.phonebook.View.SideBar;
 import max.phonebook.View.SideBar.OnTouchingLetterChangedListener;
@@ -46,7 +46,7 @@ public class ContactsFragment extends Fragment {
 	private CharacterParser characterParser;
 	private ArrayList<Person> PhoneInfos=new ArrayList<Person>();//创建一个保存获得的联系人的列表来存放数据
 	
-	private  GetPhoneInfo gpi;//创建一个获得联系人
+	private  PhoneInfo gpi;//创建一个获得联系人
 	
 	private static final int GET_PHONE_OK=0x01;//获取联系人成功
 	public FragmentActivity activity;	
@@ -74,7 +74,7 @@ public class ContactsFragment extends Fragment {
 	      parent.removeView(mview);
 	    }
 	    activity=getActivity();
-	    gpi=new GetPhoneInfo(activity);
+	    gpi=new PhoneInfo(activity);
 	    pinyinComparator = new PinyinComparator();
 	    characterParser = CharacterParser.getInstance();
 	    GetPhoneInfos();
@@ -92,7 +92,7 @@ public class ContactsFragment extends Fragment {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				PhoneInfos=(ArrayList<Person>) new GetPhoneInfo(activity).getphoneinfo("");			
+				PhoneInfos=(ArrayList<Person>) new PhoneInfo(activity).getphoneinfo("");			
 				Log.e("123", "--------------"+PhoneInfos.size());					 
 				mHandler.sendEmptyMessage(0x01);
 			}

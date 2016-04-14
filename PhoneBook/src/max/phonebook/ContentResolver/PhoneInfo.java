@@ -14,7 +14,7 @@ import android.provider.ContactsContract.RawContacts;
 import max.phonebook.Ben.CharacterParser;
 import max.phonebook.Ben.Person;
 
-public class GetPhoneInfo {
+public class PhoneInfo {
 
 	private Context context;
 	/*
@@ -43,7 +43,7 @@ public class GetPhoneInfo {
 
 	static ArrayList<Person> listph = new ArrayList<Person>();// 创建一个排好序以后的数组（）
 
-	public GetPhoneInfo(Context context) {
+	public PhoneInfo(Context context) {
 		this.context = context;
 		characterParser = CharacterParser.getInstance();
 	}

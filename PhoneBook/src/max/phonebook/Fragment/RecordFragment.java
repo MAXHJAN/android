@@ -20,7 +20,7 @@ import max.phonebook.MyAppLication;
 import max.phonebook.R;
 import max.phonebook.Adapter.RecordListViewAdapter;
 import max.phonebook.Ben.Record;
-import max.phonebook.ContentResolver.GetRecordInfo;
+import max.phonebook.ContentResolver.RecordInfo;
 import max.phonebook.View.CustomSwipeListView;
 
 public class RecordFragment extends Fragment {
@@ -62,20 +62,20 @@ public class RecordFragment extends Fragment {
 	private void init(View view) {
 		recordListView = (CustomSwipeListView) view.findViewById(R.id.recordlistview);
 	}
-	
+
 	private void ListViewLisenler() {
 		recordListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {/*
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// TODO Auto-generated method stub
 
 				Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + RecordList.get(position).getPhone()));
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				activity.startActivity(intent);
-			*/
+
 				Toast.makeText(activity, "µã»÷", Toast.LENGTH_SHORT).show();
-				}
+			}
 		});
 
 	}
@@ -91,7 +91,7 @@ public class RecordFragment extends Fragment {
 			public void run() {
 				// TODO Auto-generated method stub
 				RecordList.clear();
-				RecordList = GetRecordInfo.getRecord(activity);
+				RecordList = RecordInfo.getRecord(activity);
 				Log.e("TAG", "size---" + RecordList.size());
 				mHandler.sendEmptyMessage(0x01);
 			}

@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import max.phonebook.ContentResolver.GetPhoneInfo;
+import max.phonebook.ContentResolver.PhoneInfo;
 
 public class AddContactActivity extends Activity{
 
@@ -50,7 +50,7 @@ public class AddContactActivity extends Activity{
 				String phone=PersonPhone.getText().toString().trim();
 				String email=PersonEmail.getText().toString().trim();
 				String address=PersonAddress.getText().toString().trim();
-				new GetPhoneInfo(AddContactActivity.this).testAddContacts(name, phone, email, address);
+				new PhoneInfo(AddContactActivity.this).testAddContacts(name, phone, email, address);
 				Toast.makeText(AddContactActivity.this, "±£´æ³É¹¦", Toast.LENGTH_LONG).show();
 			}
 		});

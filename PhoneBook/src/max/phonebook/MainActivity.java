@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -40,6 +41,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private FragmentTransaction beginTransaction;
 
 	private long firstTime = 0;
+	private CallFragment mCallFragment;
+	private ContactsFragment mContactsFragment;
+	private RecordFragment mRecordFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 		getActionBar().hide();
 		IntView();
+		getSharedPreferences("Config", MODE_PRIVATE).edit().putBoolean("call", false).commit();
 
 	}
 
@@ -61,8 +66,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		CallImage = (ImageView) findViewById(R.id.callimage);
 		RecordImage = (ImageView) findViewById(R.id.recordimage);
 		ContactImage.setImageResource(R.drawable.contact);
-		 beginTransaction=getSupportFragmentManager().beginTransaction();
-	     beginTransaction.replace(R.id.mainview, new ContactsFragment()).commit();
+		beginTransaction = getSupportFragmentManager().beginTransaction();
+		beginTransaction.replace(R.id.mainview, new ContactsFragment()).commit();
 		Contact.setOnClickListener(this);
 		Call.setOnClickListener(this);
 		Record.setOnClickListener(this);
@@ -184,49 +189,58 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.contact:
 			switch (currIndex) {
-			case 1:			
-				CallImage.setImageResource(R.drawable.keybood_1);										
+			case 1:
+				CallImage.setImageResource(R.drawable.keybood_1);
 				break;
 			case 2:
 				RecordImage.setImageResource(R.drawable.record_1);
 				break;
 			}
-			ContactImage.setImageResource(R.drawable.contact);		
+			ContactImage.setImageResource(R.drawable.contact);
 			Title.setText("联系人");
 			currIndex = 0;
-			beginTransaction=getSupportFragmentManager().beginTransaction();
-			beginTransaction.replace(R.id.mainview, new ContactsFragment()).commit();
+			if (mContactsFragment == null)
+				mContactsFragment = new ContactsFragment();
+			beginTransaction = getSupportFragmentManager().beginTransaction();
+			beginTransaction.replace(R.id.mainview, mContactsFragment).commit();
 			break;
 
 		case R.id.call:
 			switch (currIndex) {
-			case 0:			
-				ContactImage.setImageResource(R.drawable.contact_1);									
+			case 0:
+				ContactImage.setImageResource(R.drawable.contact_1);
 				break;
 			case 2:
 				RecordImage.setImageResource(R.drawable.record_1);
 				break;
 			}
-			CallImage.setImageResource(R.drawable.keybood);		
+			CallImage.setImageResource(R.drawable.keybood);
 			Title.setText("拨打电话");
 			currIndex = 1;
-			beginTransaction=getSupportFragmentManager().beginTransaction();
-			beginTransaction.replace(R.id.mainview, new CallFragment()).commit();
+			if (mCallFragment == null)
+				mCallFragment = new CallFragment();
+			beginTransaction = getSupportFragmentManager().beginTransaction();
+			beginTransaction.replace(R.id.mainview, mCallFragment).commit();
+			if(getSharedPreferences("Config", MODE_PRIVATE).getBoolean("call", false)){
+				mCallFragment.PopWindow();
+			}
 			break;
 		case R.id.record:
 			switch (currIndex) {
-			case 0:			
-				ContactImage.setImageResource(R.drawable.contact_1);									
+			case 0:
+				ContactImage.setImageResource(R.drawable.contact_1);
 				break;
 			case 1:
-				CallImage.setImageResource(R.drawable.keybood_1);		
+				CallImage.setImageResource(R.drawable.keybood_1);
 				break;
 			}
 			RecordImage.setImageResource(R.drawable.record);
 			Title.setText("通话记录");
 			currIndex = 2;
-			beginTransaction=getSupportFragmentManager().beginTransaction();
-			beginTransaction.replace(R.id.mainview, new RecordFragment()).commit();
+			if (mRecordFragment == null)
+				mRecordFragment = new RecordFragment();
+			beginTransaction = getSupportFragmentManager().beginTransaction();
+			beginTransaction.replace(R.id.mainview, mRecordFragment).commit();
 			break;
 		}
 	}
