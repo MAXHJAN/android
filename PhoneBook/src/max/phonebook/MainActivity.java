@@ -54,8 +54,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		getSharedPreferences("Config", MODE_PRIVATE).edit().putBoolean("call", false).commit();
 
 	}
-
-	@SuppressWarnings("unused")
 	private void IntView() {
 		Title = (TextView) findViewById(R.id.phonetitle);
 		Contact = findViewById(R.id.contact);

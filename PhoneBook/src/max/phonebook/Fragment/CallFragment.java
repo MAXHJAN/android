@@ -51,7 +51,6 @@ public class CallFragment extends Fragment implements View.OnClickListener {
 	public FragmentActivity activity;
 
 	private PopupWindow popupWindow;
-	private String str = "";
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,7 +63,7 @@ public class CallFragment extends Fragment implements View.OnClickListener {
 		if (parent != null) {
 			parent.removeView(mview);
 		}
-		activity = getActivity();		
+		activity = getActivity();
 		initView(mview);
 		initPopWindow();
 		return mview;
@@ -125,10 +124,7 @@ public class CallFragment extends Fragment implements View.OnClickListener {
 		// 设置允许在外点击消失
 		popupWindow.setOutsideTouchable(true);
 		popupWindow.setBackgroundDrawable(new BitmapDrawable());
-		str = activity.getSharedPreferences("Config", activity.MODE_PRIVATE).getString("str", "");
-		PhoneNumber.setText(str);
 		popupWindow.showAtLocation(mListView, Gravity.BOTTOM, 0, 0);
-		Adapter.updateListView(CallfilterData(str));
 	}
 
 	private void initPopView(View view) {
@@ -165,8 +161,6 @@ public class CallFragment extends Fragment implements View.OnClickListener {
 				if (s.toString() == null)
 					return;
 				Log.e("123", "qqqqq-----" + s.toString());
-				activity.getSharedPreferences("Config", activity.MODE_PRIVATE).edit().putString("str", s.toString())
-						.commit();
 				Adapter.updateListView(CallfilterData(s.toString()));
 			}
 
@@ -225,11 +219,14 @@ public class CallFragment extends Fragment implements View.OnClickListener {
 			PhoneNumber.append("#");
 			break;
 		case R.id.addperson:
-			Bundle bun = new Bundle();
-			bun.putString("PersonName", PhoneNumber.getText().toString().trim());
-			Intent inten = new Intent(activity, AddContactActivity.class);
-			inten.putExtras(bun);
-			startActivity(inten);
+			if (!isfilter(PhoneNumber.getText().toString().trim())) {
+				Bundle bun = new Bundle();
+				bun.putString("PersonName", PhoneNumber.getText().toString().trim());
+				Intent inten = new Intent(activity, AddContactActivity.class);
+				inten.putExtras(bun);
+				startActivity(inten);
+			} else
+				Toast.makeText(activity, "号码已存在", Toast.LENGTH_LONG).show();
 			break;
 		case R.id.delete:
 			String str = PhoneNumber.getText().toString();
@@ -252,6 +249,14 @@ public class CallFragment extends Fragment implements View.OnClickListener {
 		}
 	}
 
+	private Boolean isfilter(String number) {
+		for (int i = 0; i < filterDate.size(); i++) {
+			if (filterDate.get(i).getPhonenumber().equals(number))
+				return true;
+		}
+		return false;
+	}
+
 	public List<Person> CallfilterData(String filterStr) {
 		List<Person> filterDateList = new ArrayList<Person>();
 		if (TextUtils.isEmpty(filterStr)) {
@@ -272,7 +277,8 @@ public class CallFragment extends Fragment implements View.OnClickListener {
 				}
 			}
 		}
-		filterDate = filterDateList;
+		filterDate.clear();
+		filterDate.addAll(filterDateList);
 		return filterDateList;
 	}
 
@@ -280,7 +286,6 @@ public class CallFragment extends Fragment implements View.OnClickListener {
 	public void onDestroyView() {
 		// TODO Auto-generated method stub
 		super.onDestroyView();
-		activity.getSharedPreferences("Config", activity.MODE_PRIVATE).edit().putString("str", "").commit();
 	}
 
 	@Override

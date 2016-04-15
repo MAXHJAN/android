@@ -219,8 +219,9 @@ public class PhoneInfo {
 	 * @param ContactId
 	 */
 
-	public void deleteContact(int ContactId) {
-		context.getContentResolver().delete(ContentUris.withAppendedId(RawContacts.CONTENT_URI, ContactId), null, null);
+	public static void deleteContact(int ContactId, Context mContext) {
+		mContext.getContentResolver().delete(ContentUris.withAppendedId(RawContacts.CONTENT_URI, ContactId), null,
+				null);
 	}
 
 }

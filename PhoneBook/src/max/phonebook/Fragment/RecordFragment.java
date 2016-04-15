@@ -14,9 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
-import max.phonebook.MyAppLication;
 import max.phonebook.R;
 import max.phonebook.Adapter.RecordListViewAdapter;
 import max.phonebook.Ben.Record;
@@ -27,7 +25,6 @@ public class RecordFragment extends Fragment {
 
 	private View mview;
 	private List<Record> RecordList = new ArrayList<Record>();// 创建一个保存获得的联系人的列表来存放数据
-	private MyAppLication MyApp;
 	public FragmentActivity activity;
 
 	private CustomSwipeListView recordListView;
@@ -73,8 +70,6 @@ public class RecordFragment extends Fragment {
 				Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + RecordList.get(position).getPhone()));
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				activity.startActivity(intent);
-
-				Toast.makeText(activity, "点击", Toast.LENGTH_SHORT).show();
 			}
 		});
 

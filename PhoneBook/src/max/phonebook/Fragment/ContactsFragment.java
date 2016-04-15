@@ -75,13 +75,24 @@ public class ContactsFragment extends Fragment {
 	    }
 	    activity=getActivity();
 	    gpi=new PhoneInfo(activity);
-	    pinyinComparator = new PinyinComparator();
-	    characterParser = CharacterParser.getInstance();
 	    GetPhoneInfos();
+	    pinyinComparator = new PinyinComparator();
+	    characterParser = CharacterParser.getInstance();	   
 	    intView(mview);	    
 	    OnClickLisenler();
 		return mview;
 	}
+	
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if(activity.getSharedPreferences("Config", activity.MODE_PRIVATE).getBoolean("delete", false)){
+			 GetPhoneInfos();
+			 activity.getSharedPreferences("Config", activity.MODE_PRIVATE).edit().putBoolean("delete", false);
+		}
+	}
+
 
 	
 	@SuppressWarnings("static-access")

@@ -3,6 +3,7 @@ package max.phonebook.Adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,12 +11,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import max.phonebook.PersonInfoActivity;
 import max.phonebook.R;
 import max.phonebook.Ben.Record;
 import max.phonebook.ContentResolver.RecordInfo;
 import max.phonebook.View.CustomSwipeListView;
 import max.phonebook.View.SwipeItemView;
 import max.phonebook.View.SwipeItemView.OnSlideListener;
+import max.phonebook.utils.ToastUtil;
 
 public class RecordListViewAdapter extends BaseAdapter {
 
@@ -101,7 +104,7 @@ public class RecordListViewAdapter extends BaseAdapter {
 				RecordInfo.deleteRecord(list.get(position).getId(), context);
 				list.remove(position);
 				notifyDataSetChanged();
-				Toast.makeText(context, "删除成功", Toast.LENGTH_SHORT).show();
+				ToastUtil.showShortToast(context, "删除成功", Gravity.CENTER);
 			}
 		});
 		return slideView;
@@ -113,8 +116,7 @@ public class RecordListViewAdapter extends BaseAdapter {
 		TextView Name;// 姓名
 		TextView Number;// 电话
 		TextView Type;// 类型
-
-		public ViewGroup deleteHolder;
+        ViewGroup deleteHolder;
 
 		public ViewHolder(View view) {
 			// TODO Auto-generated constructor stub
