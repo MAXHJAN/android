@@ -44,16 +44,19 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private CallFragment mCallFragment;
 	private ContactsFragment mContactsFragment;
 	private RecordFragment mRecordFragment;
+	public static MainActivity instens = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		instens = this;
 		getActionBar().hide();
 		IntView();
 		getSharedPreferences("Config", MODE_PRIVATE).edit().putBoolean("call", false).commit();
 
 	}
+
 	private void IntView() {
 		Title = (TextView) findViewById(R.id.phonetitle);
 		Contact = findViewById(R.id.contact);
@@ -219,7 +222,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				mCallFragment = new CallFragment();
 			beginTransaction = getSupportFragmentManager().beginTransaction();
 			beginTransaction.replace(R.id.mainview, mCallFragment).commit();
-			if(getSharedPreferences("Config", MODE_PRIVATE).getBoolean("call", false)){
+			if (getSharedPreferences("Config", MODE_PRIVATE).getBoolean("call", false)) {
 				mCallFragment.PopWindow();
 			}
 			break;
@@ -243,4 +246,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		}
 	}
 
+	public void refalsh() {
+		mRecordFragment.reflash();
+	}
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import android.content.ContentValues;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.CallLog;
@@ -106,5 +106,10 @@ public class RecordInfo {
 						new String[] { number });
 			}
 		}).start();
+	}
+
+	public static void cleanCallLog(Context context) {
+		ContentResolver resolver = context.getContentResolver();
+		resolver.delete(CallLog.Calls.CONTENT_URI, null, null);
 	}
 }

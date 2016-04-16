@@ -491,36 +491,40 @@ public final class R {
         public static final int rating_good=0x7f020019;
         public static final int record=0x7f02001a;
         public static final int record_1=0x7f02001b;
-        public static final int search_bar_edit_normal=0x7f02001c;
-        public static final int search_bar_edit_pressed=0x7f02001d;
-        public static final int search_bar_edit_selector=0x7f02001e;
-        public static final int search_bar_icon_normal=0x7f02001f;
-        public static final int show_head_toast_bg=0x7f020020;
-        public static final int shpae1=0x7f020021;
-        public static final int sidebar_background=0x7f020022;
-        public static final int submit_shape=0x7f020023;
-        public static final int textview_shape=0x7f020024;
-        public static final int toast_shape=0x7f020025;
+        public static final int roundretangle=0x7f02001c;
+        public static final int search_bar_edit_normal=0x7f02001d;
+        public static final int search_bar_edit_pressed=0x7f02001e;
+        public static final int search_bar_edit_selector=0x7f02001f;
+        public static final int search_bar_icon_normal=0x7f020020;
+        public static final int show_head_toast_bg=0x7f020021;
+        public static final int shpae1=0x7f020022;
+        public static final int sidebar_background=0x7f020023;
+        public static final int submit_shape=0x7f020024;
+        public static final int textview_shape=0x7f020025;
+        public static final int toast_shape=0x7f020026;
     }
     public static final class id {
-        public static final int action_settings=0x7f090040;
+        public static final int action_settings=0x7f090044;
         public static final int add_personaddress=0x7f090011;
         public static final int add_personemail=0x7f090010;
         public static final int add_personname=0x7f09000e;
         public static final int add_personphone=0x7f09000f;
+        public static final int addblacklist=0x7f09003c;
         public static final int addperson=0x7f090028;
         public static final int back=0x7f09001c;
         public static final int call=0x7f090006;
         public static final int call_up=0x7f09001f;
         public static final int callimage=0x7f090007;
+        public static final int callup=0x7f09003a;
         public static final int catalog=0x7f090024;
+        public static final int clearrecord=0x7f09003b;
         public static final int contact=0x7f090004;
         public static final int contactimage=0x7f090005;
         public static final int delete=0x7f09002a;
         public static final int dialog=0x7f090016;
         public static final int filter_edit=0x7f090014;
         public static final int head=0x7f090025;
-        public static final int holder=0x7f09003f;
+        public static final int holder=0x7f090043;
         public static final int imageView1=0x7f09000a;
         public static final int list=0x7f090013;
         public static final int listView=0x7f090015;
@@ -530,6 +534,7 @@ public final class R {
         public static final int mainview=0x7f090003;
         public static final int menu=0x7f09001d;
         public static final int menuitem=0x7f090037;
+        public static final int mname=0x7f090039;
         public static final int myback=0x7f09000c;
         public static final int name=0x7f090026;
         public static final int num0=0x7f090035;
@@ -554,20 +559,20 @@ public final class R {
         public static final int phonenumner=0x7f090029;
         public static final int phonetitle=0x7f090001;
         public static final int poplistview=0x7f090038;
-        public static final int r_lv_head=0x7f09003a;
-        public static final int r_lv_name=0x7f09003b;
-        public static final int r_lv_phone=0x7f09003c;
-        public static final int r_lv_type=0x7f09003d;
+        public static final int r_lv_head=0x7f09003e;
+        public static final int r_lv_name=0x7f09003f;
+        public static final int r_lv_phone=0x7f090040;
+        public static final int r_lv_type=0x7f090041;
         public static final int record=0x7f090008;
         public static final int recordimage=0x7f090009;
-        public static final int recordlistview=0x7f090039;
+        public static final int recordlistview=0x7f09003d;
         public static final int sendsms=0x7f090020;
         public static final int sidrbar=0x7f090017;
         public static final int submit=0x7f090012;
         public static final int textView1=0x7f09000b;
         public static final int title=0x7f090000;
         public static final int toast_text=0x7f09001b;
-        public static final int view_content=0x7f09003e;
+        public static final int view_content=0x7f090042;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -582,9 +587,10 @@ public final class R {
         public static final int popcallkeyboard=0x7f030009;
         public static final int poplistview_item=0x7f03000a;
         public static final int popwindow=0x7f03000b;
-        public static final int recordfragment=0x7f03000c;
-        public static final int recordlistview_item=0x7f03000d;
-        public static final int slide_view_merge=0x7f03000e;
+        public static final int recorddialog=0x7f03000c;
+        public static final int recordfragment=0x7f03000d;
+        public static final int recordlistview_item=0x7f03000e;
+        public static final int slide_view_merge=0x7f03000f;
     }
     public static final class menu {
         public static final int main=0x7f080000;

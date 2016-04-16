@@ -132,11 +132,15 @@ public class PersonInfoActivity extends Activity implements OnClickListener {
 				// TODO Auto-generated method stub
 				switch (position) {
 				case 0:
+					PersonInfo.setName(PersonName.getText().toString().trim());
+					PersonInfo.setPhonenumber(PersonPhone.getText().toString().trim());
+					PersonInfo.setEmail(PersonEmail.getText().toString().trim());
+					PersonInfo.setAddress(PersonAddress.getText().toString().trim());
 					Bundle bun = new Bundle();
 					bun.putSerializable("person", PersonInfo);
 					Intent intent = new Intent(PersonInfoActivity.this, EditContactActivity.class);
 					intent.putExtras(bun);
-					startActivity(intent);
+					startActivityForResult(intent, 0);
 					if (popupWindow != null)
 						popupWindow.dismiss();
 					break;
@@ -150,7 +154,7 @@ public class PersonInfoActivity extends Activity implements OnClickListener {
 					}
 					if (popupWindow != null)
 						popupWindow.dismiss();
-					popupWindow=null;
+					popupWindow = null;
 					break;
 				case 2:
 					PhoneInfo.deleteContact(Integer.parseInt(PersonInfo.getID()), PersonInfoActivity.this);
@@ -164,5 +168,21 @@ public class PersonInfoActivity extends Activity implements OnClickListener {
 				}
 			}
 		});
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode == 0) {
+			String name = data.getStringExtra("name");
+			String phone = data.getStringExtra("phone");
+			String email = data.getStringExtra("email");
+			String address = data.getStringExtra("address");
+			PersonName.setText(name);
+			PersonPhone.setText(phone);
+			PersonEmail.setText(email);
+			PersonAddress.setText(address);
+		}
 	}
 }

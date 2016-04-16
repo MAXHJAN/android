@@ -3,6 +3,7 @@ package max.phonebook.Fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,11 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import max.phonebook.R;
 import max.phonebook.Adapter.RecordListViewAdapter;
 import max.phonebook.Ben.Record;
 import max.phonebook.ContentResolver.RecordInfo;
 import max.phonebook.View.CustomSwipeListView;
+import max.phonebook.View.RecordDialog;
+import max.phonebook.db.BlackListDaoFactory;
 
 public class RecordFragment extends Fragment {
 
@@ -29,6 +33,8 @@ public class RecordFragment extends Fragment {
 
 	private CustomSwipeListView recordListView;
 	private RecordListViewAdapter mAdapter;
+
+	private RecordDialog mDialog;
 
 	public Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
@@ -56,6 +62,11 @@ public class RecordFragment extends Fragment {
 		return mview;
 	}
 
+	public void reflash() {
+		RecordList.clear();
+		mAdapter.notifyDataSetChanged();
+	}
+
 	private void init(View view) {
 		recordListView = (CustomSwipeListView) view.findViewById(R.id.recordlistview);
 	}
@@ -70,6 +81,28 @@ public class RecordFragment extends Fragment {
 				Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + RecordList.get(position).getPhone()));
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				activity.startActivity(intent);
+			}
+		});
+		recordListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				if (mDialog == null)
+					mDialog = new RecordDialog(activity);
+				String name = null;
+				if (RecordList.get(position).getName() == null)
+					name = RecordList.get(position).getPhone();
+				else
+					name = RecordList.get(position).getName();
+				if (BlackListDaoFactory.getBlackListDao(activity).queryBlack(RecordList.get(position).getPhone()))
+					mDialog.setTextBlackList("移除黑名单", name);
+				else
+					mDialog.setTextBlackList("加入黑名单", name);
+
+				mDialog.setListener(RecordList.get(position));
+				mDialog.show();
+				return false;
 			}
 		});
 
@@ -99,5 +132,19 @@ public class RecordFragment extends Fragment {
 	public void SetView() {
 		mAdapter = new RecordListViewAdapter(activity, RecordList);
 		recordListView.setAdapter(mAdapter);
+	}
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		Log.e("TAG", "onPause--");
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Log.e("TAG", "onResume--");
 	}
 }
