@@ -57,7 +57,6 @@ public class RecordFragment extends Fragment {
 		}
 		activity = getActivity();
 		init(mview);
-		gitRecordInfo();
 		ListViewLisenler();
 		return mview;
 	}
@@ -119,7 +118,7 @@ public class RecordFragment extends Fragment {
 			public void run() {
 				// TODO Auto-generated method stub
 				RecordList.clear();
-				RecordList = RecordInfo.getRecord(activity);
+				RecordList.addAll(RecordInfo.getRecord(activity));
 				Log.e("TAG", "size---" + RecordList.size());
 				mHandler.sendEmptyMessage(0x01);
 			}
@@ -130,8 +129,11 @@ public class RecordFragment extends Fragment {
 	 *   ≈‰ ˝æ›
 	 */
 	public void SetView() {
-		mAdapter = new RecordListViewAdapter(activity, RecordList);
-		recordListView.setAdapter(mAdapter);
+		if (mAdapter == null) {
+			mAdapter = new RecordListViewAdapter(activity, RecordList);
+			recordListView.setAdapter(mAdapter);
+		} else
+			mAdapter.notifyDataSetChanged();
 	}
 
 	@Override
@@ -145,6 +147,7 @@ public class RecordFragment extends Fragment {
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		gitRecordInfo();
 		Log.e("TAG", "onResume--");
 	}
 }

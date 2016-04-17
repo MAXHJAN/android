@@ -122,11 +122,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 					inten.putExtras(bun);
 					startActivity(inten);
 					if (popupWindow != null)
-						popupWindow.dismiss();
+						popupWindow.dismiss();					
 					break;
 				case 1:
 					if (popupWindow != null)
 						popupWindow.dismiss();
+					startActivity(new Intent(MainActivity.this, SettingActivity.class));
 					break;
 				case 2:
 					if (popupWindow != null)

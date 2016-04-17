@@ -1,5 +1,9 @@
 package max.phonebook.db;
 
+import java.util.List;
+
+import max.phonebook.Ben.BlackList;
+
 public interface BlackListDao {
 
 	/**
@@ -26,4 +30,11 @@ public interface BlackListDao {
 	 * @return
 	 */
 	public boolean queryBlack(String number);
+
+	/**
+	 * 查询所有黑名单
+	 * 
+	 * @return
+	 */
+	public List<BlackList> queryBlackList();
 }

@@ -22,6 +22,7 @@ public class RecordInfo {
 	public static List<Record> getRecord(Context context) {
 
 		List<Record> list = new ArrayList<Record>();
+		List<Record> list1 = new ArrayList<Record>();
 		Record mRecord = null;
 		Cursor cursor = context.getContentResolver().query(CallLog.Calls.CONTENT_URI, null, null, null, null);
 		if (cursor.moveToFirst()) {
@@ -68,7 +69,11 @@ public class RecordInfo {
 			} while (cursor.moveToNext());
 
 		}
-		return list;
+		list1.clear();
+		for(int i=list.size()-1;i>=0;i--){
+			list1.add(list.get(i));
+		}
+		return list1;
 	}
 
 	/**

@@ -1,9 +1,13 @@
 package max.phonebook.db;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import max.phonebook.Ben.BlackList;
 
 public class BlackListDaoImpl implements BlackListDao {
 
@@ -42,12 +46,12 @@ public class BlackListDaoImpl implements BlackListDao {
 	public boolean queryBlack(String number) {
 		// TODO Auto-generated method stub
 		SQLiteDatabase database = null;
-		Cursor cursor=null;
+		Cursor cursor = null;
 		try {
 			database = mDbHelper.getWritableDatabase();
-			String sql="select * from blacklist where number='"+number+"'";
-			cursor=database.rawQuery(sql, null);
-			while(cursor.moveToNext()){
+			String sql = "select * from blacklist where number='" + number + "'";
+			cursor = database.rawQuery(sql, null);
+			while (cursor.moveToNext()) {
 				database.close();
 				return true;
 			}
@@ -56,6 +60,32 @@ public class BlackListDaoImpl implements BlackListDao {
 			Log.i("TAG", "查询数据失败");
 		}
 		return false;
+	}
+
+	@Override
+	public List<BlackList> queryBlackList() {
+		// TODO Auto-generated method stub
+		SQLiteDatabase database = null;
+		List<BlackList> mlist = new ArrayList<BlackList>();
+		BlackList mBlackList;
+		Cursor cursor = null;
+		try {
+			database = mDbHelper.getWritableDatabase();
+			String sql = "select * from blacklist";
+			cursor = database.rawQuery(sql, null);
+			while (cursor.moveToNext()) {
+				mBlackList = new BlackList();
+				mBlackList.setNumber((cursor.getString(1)));
+				mBlackList.setName(cursor.getString(2));
+				mlist.add(mBlackList);
+				mBlackList = null;
+			}
+			database.close();
+		} catch (Exception e) {
+			Log.i("TAG", "查询数据失败");
+		}
+
+		return mlist;
 	}
 
 }
