@@ -29,7 +29,6 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 import max.phonebook.AddContactActivity;
-import max.phonebook.MyAppLication;
 import max.phonebook.R;
 import max.phonebook.Adapter.mListviewAdapter;
 import max.phonebook.Ben.Person;
@@ -47,7 +46,6 @@ public class CallFragment extends Fragment implements View.OnClickListener {
 	List<Person> filterDate = new ArrayList<Person>();
 
 	private mListviewAdapter Adapter;
-	private MyAppLication MyApp;
 	public FragmentActivity activity;
 
 	private PopupWindow popupWindow;
