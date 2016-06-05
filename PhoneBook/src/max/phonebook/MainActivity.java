@@ -84,6 +84,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	public void PopWindow() {
+		
 		if (popupWindow == null) {
 			LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
